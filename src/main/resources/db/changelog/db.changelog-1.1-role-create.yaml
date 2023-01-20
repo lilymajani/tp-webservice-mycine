@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.1-role
+      author: Lily
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: role_pkey
+                    nullable: false
+                  name: id
+                  type: bigint
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+            tableName: ref_role

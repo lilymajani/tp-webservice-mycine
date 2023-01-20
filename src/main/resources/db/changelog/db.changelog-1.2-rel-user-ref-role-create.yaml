@@ -1,0 +1,46 @@
+databaseChangeLog:
+    - changeSet:
+        id: 1.2.1-rel-user-ref-role-1
+        author: Lily
+        changes:
+            - createTable:
+                columns:
+                    - column:
+                        constraints:
+                            nullable: false
+                        name: user_id
+                        type: bigint
+                    - column:
+                        constraints:
+                            nullable: false
+                        name: role_id
+                        type: bigint
+                tableName: rel_user_ref_role
+    - changeSet:
+        id: 1.2.2-rel-user-ref-role
+        author: Lily
+        changes:
+            - addForeignKeyConstraint:
+                baseColumnNames: user_id
+                baseTableName: rel_user_ref_role
+                constraintName: fk_user_rel_user_ref_role
+                deferrable: false
+                initiallyDeferred: false
+                onDelete: NO ACTION
+                onUpdate: NO ACTION
+                referencedColumnNames: id
+                referencedTableName: user
+            - addForeignKeyConstraint:
+                baseColumnNames: role_id
+                baseTableName: rel_user_ref_role
+                constraintName: fk_role_rel_user_ref_role
+                deferrable: false
+                initiallyDeferred: false
+                onDelete: NO ACTION
+                onUpdate: NO ACTION
+                referencedColumnNames: id
+                referencedTableName: ref_role
+            - addPrimaryKey:
+                columnNames: user_id, role_id
+                constraintName: pk_user_role
+                tableName: rel_user_ref_role

@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.4-film
+      author: Lily
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: film_pkey
+                    nullable: false
+                  name: id
+                  type: bigint
+              - column:
+                  constraints:
+                    nullable: false
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: poster_path
+                  type: VARCHAR(255)
+            tableName: film

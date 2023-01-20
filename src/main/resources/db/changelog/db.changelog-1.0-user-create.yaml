@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0-user
+      author: Lily
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_pkey
+                    nullable: false
+                  name: id
+                  type: bigint
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: firstname
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: password
+                  type: VARCHAR(1000)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: birth_date
+                  type: date
+            tableName: user

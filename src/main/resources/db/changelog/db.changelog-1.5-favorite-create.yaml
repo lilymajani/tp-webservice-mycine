@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.5.1-favorite
+      author: Lily
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: favorite_pkey
+                    nullable: false
+                  name: id
+                  type: bigint
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: bigint
+              - column:
+                  constraints:
+                    nullable: false
+                  name: film_id
+                  type: bigint
+            tableName: favorite
+  - changeSet:
+      id: 1.5.2-favorite
+      author: Lily
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: favorite
+            constraintName: fk_user_rel_user_film
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: user
+        - addForeignKeyConstraint:
+            baseColumnNames: film_id
+            baseTableName: favorite
+            constraintName: fk_film_rel_user
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: film
